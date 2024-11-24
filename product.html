@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Sản Phẩm</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header>
+    <h1>Mỹ Đình-Car</h1>
+    <nav>
+      <a href="index.html">Trang Chủ</a>
+      <a href="cart.html">Giỏ Hàng</a>
+    </nav>
+  </header>
+
+  <main>
+    <div id="product-detail" class="product-detail"></div>
+  </main>
+
+  <footer>
+    <p>© 2024 Mỹ Đình-Car</p>
+  </footer>
+
+  <script>
+    // Danh sách thông tin sản phẩm
+    const products = {
+      1: {
+        name: "Lamborghini Aventador",
+        description: "Một siêu xe mạnh mẽ với động cơ V12, tăng tốc từ 0-100 km/h chỉ trong 2,9 giây. Thiết kế đỉnh cao dành cho những người yêu thích tốc độ.",
+        price: "40 Tỷ VNĐ",
+        color: "gold"
+      },
+      2: {
+        name: "Maybach S650",
+        description: "Xe sang trọng bậc nhất với nội thất đẳng cấp, tích hợp công nghệ hiện đại và động cơ mạnh mẽ. Lý tưởng cho những chuyến đi xa hoa.",
+        price: "35 Tỷ VNĐ",
+        color: "silver"
+      },
+      3: {
+        name: "Rolls-Royce Phantom",
+        description: "Một trong những dòng xe sang trọng bậc nhất thế giới, với thiết kế đỉnh cao, nội thất xa hoa và động cơ mạnh mẽ.",
+        price: "60 Tỷ VNĐ",
+        color: "lightblue"
+      },
+      4: {
+        name: "Porsche 911 Turbo S",
+        description: "Một siêu xe thể thao mang tính biểu tượng của Porsche, sở hữu hiệu suất vượt trội, tăng tốc nhanh chóng và thiết kế thể thao.",
+        price: "15 Tỷ VNĐ",
+        color: "coral"
+      }
+    };
+
+    // Lấy ID sản phẩm từ URL
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get("id");
+
+    // Hiển thị thông tin sản phẩm
+    const productDetailDiv = document.getElementById("product-detail");
+    if (products[productId]) {
+      const product = products[productId];
+      productDetailDiv.innerHTML = `
+        <div style="background-color: ${product.color}; padding: 20px; border-radius: 10px;">
+          <h2>${product.name}</h2>
+          <p>${product.description}</p>
+          <p><strong>Giá:</strong> ${product.price}</p>
+          <button>Thêm vào Giỏ Hàng</button>
+        </div>
+      `;
+    } else {
+      productDetailDiv.innerHTML = "<p>Không tìm thấy sản phẩm.</p>";
+    }
+  </script>
+</body>
+</html>
